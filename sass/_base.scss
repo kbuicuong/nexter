@@ -33,3 +33,24 @@ body{
     font-weight: 300;
     line-height: 1.6;
 }
+
+.container{
+    display: grid;
+    //1st row 80vh
+    //2nd row expand based on content
+    //3rd row 40vw 
+    //the rest is based on content
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+
+    //1st column (sidebar) 80px
+    //2nd column rest of space to help center 
+    //the next 8 columns minimum is the content, max is 140px
+    //last column is rest of space to help center
+    grid-template-columns: [sidebar-start]8rem[sidebar-end full-start] minmax(6rem,1fr) [center-start]repeat(8, [col-start] minmax(min-content, 14rem) [col-end])[center-end] minmax(6rem,1fr) [full-end]; 
+
+    //direct children (for debugging only)
+    & > *{
+        padding: 4rem;
+        font-size: 3rem;
+    }
+}
